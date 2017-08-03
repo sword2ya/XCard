@@ -11,6 +11,10 @@ CGlobalClient::CGlobalClient(void)
 
 CGlobalClient::~CGlobalClient(void)
 {
+	if (m_eRunState == eClientRunState_Running)
+	{
+		Stop();
+	}
 }
 
 void CGlobalClient::Release()
@@ -39,12 +43,14 @@ bool CGlobalClient::Start()
 	{
 		return false;
 	}
+	m_oMessageHandlerRegister.InitMessageHandlers();
 	m_eRunState = eClientRunState_Running;
 	return true;
 }
 
 bool CGlobalClient::Stop()
 {
+	m_oMessageHandlerRegister.UnInitMessageHandlers();
 	m_eRunState = eClientRunState_NotRun;
 	return true;
 }
@@ -62,4 +68,19 @@ basetools::ITimerAxis* CGlobalClient::GetTimerAxis()
 ISystemAPI* CGlobalClient::GetSystemAPI()
 {
 	return m_stInitParam.pSystemAPI;
+}
+
+ILoginManager* CGlobalClient::GetLoginManager()
+{
+	return &m_oLoginManager;
+}
+
+CServerTerminal* CGlobalClient::GetServerTerminal()
+{
+	return &m_oServerTerminal;
+}
+
+IMessageDispatcher* CGlobalClient::GetMessageDispatcher()
+{
+	return &m_oMsgDispatcher;
 }

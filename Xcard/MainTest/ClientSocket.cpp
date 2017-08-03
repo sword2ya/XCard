@@ -41,6 +41,11 @@ void CClientSocket::CloseConnect()
 
 BOOL CClientSocket::Send( LPCSTR Buf, int nLen )
 {
+	if (NULL == m_pServerSession)
+	{
+		return FALSE;
+	}
+	m_pServerSession->HandleRecvData(Buf, nLen);
 	return TRUE;
 }
 

@@ -2,14 +2,44 @@
 //
 
 #include "stdafx.h"
+#include <QtCore\QThread>
+#include <QtGui\QAction>
+
+
+csmsg::TCSMessage g_stMessagePackage;
+
+
+class CMainThread : public QThread
+{
+public:
+	CMainThread(int nArgc, char* pArgv[])
+	{
+		m_nArgc = nArgc;
+		m_pArgv = pArgv;
+	}
+	virtual void run()
+	{
+		::testing::InitGoogleTest(&m_nArgc, m_pArgv);
+		RUN_ALL_TESTS();
+	}
+private:
+	int m_nArgc;
+	char** m_pArgv;
+};
 
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	::testing::InitGoogleTest(&argc, argv);
-
-	RUN_ALL_TESTS();
-	system("pause");
+	CMainThread oMainThread(argc, argv);
+	oMainThread.start(QThread::HighPriority);
+	while (true )
+	{
+		if (oMainThread.isFinished())
+		{
+			return 0;
+		}
+		Sleep(50);
+	}
 	return 0;
 }
 

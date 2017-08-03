@@ -40,6 +40,7 @@ public:
 	IClientSocketSink* GetClientSocketSink() const;
 	void TriggerErr();
 
+
 private:
 	DWORD m_dwSocketID;
 	CSocketSystem* m_pSocketSystem;

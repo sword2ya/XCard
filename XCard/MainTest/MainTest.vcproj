@@ -41,7 +41,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="..\..\Dependence\Include;..\..\Include;..\include"
+				AdditionalIncludeDirectories="..\..\Dependence\Include;..\..\Include;..\include;..\..\Common"
 				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -61,8 +61,9 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
+				AdditionalDependencies="qtmaind.lib QtCored4.lib QtGuid4.lib"
 				LinkIncremental="2"
-				AdditionalLibraryDirectories="..\..\Dependence\Lib"
+				AdditionalLibraryDirectories="..\..\Dependence\Lib;$(QTDIR)\lib"
 				GenerateDebugInformation="true"
 				ProgramDatabaseFile="..\..\pdb\$(TargetFileName).pdb"
 				SubSystem="1"
@@ -253,6 +254,18 @@
 				Name="Server"
 				>
 				<File
+					RelativePath=".\ServerCommonPart.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\ServerCommonPart.h"
+					>
+				</File>
+				<File
+					RelativePath=".\ServerPart.h"
+					>
+				</File>
+				<File
 					RelativePath=".\ServerSession.cpp"
 					>
 				</File>
@@ -298,7 +311,35 @@
 				>
 			</File>
 			<File
+				RelativePath=".\LoginTest.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\LoginTest.h"
+				>
+			</File>
+			<File
 				RelativePath=".\SetupTest.cpp"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="Communicate"
+			>
+			<File
+				RelativePath="..\..\Include\Communicate\CSMessage.pb.cc"
+				>
+			</File>
+			<File
+				RelativePath="..\..\Include\Communicate\CSMessage.pb.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\Include\Communicate\login.pb.cc"
+				>
+			</File>
+			<File
+				RelativePath="..\..\Include\Communicate\login.pb.h"
 				>
 			</File>
 		</Filter>

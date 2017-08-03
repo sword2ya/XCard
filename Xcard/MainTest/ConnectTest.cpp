@@ -35,6 +35,11 @@ void CTest_ConnectTest_2::SetUpTestCase()
 CServerSession* CTest_ConnectTest_2::InitServerSession()
 {
 	CServerSession* pServerSession = new CServerSession;
+	if ( NULL == pServerSession || !pServerSession->Create())
+	{
+		delete pServerSession;
+		return NULL;
+	}
 	pServerSession->SetConnectHandler(ClientConnectHandler);
 	return pServerSession;
 }

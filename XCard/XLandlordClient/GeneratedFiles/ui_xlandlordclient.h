@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'xlandlordclient.ui'
 **
-** Created: Wed Jun 14 15:14:26 2017
+** Created: Wed Aug 2 09:35:29 2017
 **      by: Qt User Interface Compiler version 4.8.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!

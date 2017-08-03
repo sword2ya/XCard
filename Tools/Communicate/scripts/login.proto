@@ -1,0 +1,13 @@
+package csmsg;
+message TMSG_LOGIN_REQ
+{
+	required uint32 nUserData=1;
+	required string strUserName=2;
+	required string strPassword=3;
+}
+
+message TMSG_LOGIN_RSP
+{
+	required uint32 nUserData=1;
+	required int32 nErrCode=2;
+}

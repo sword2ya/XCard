@@ -111,7 +111,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories=".\GeneratedFiles;.;&quot;$(QTDIR)\include&quot;;&quot;.\GeneratedFiles\$(ConfigurationName)&quot;;&quot;$(QTDIR)\include\QtCore&quot;;&quot;$(QTDIR)\include\QtGui&quot;;..\include;..\..\Dependence\Include"
+				AdditionalIncludeDirectories=".\GeneratedFiles;.;&quot;$(QTDIR)\include&quot;;&quot;.\GeneratedFiles\$(ConfigurationName)&quot;;&quot;$(QTDIR)\include\QtCore&quot;;&quot;$(QTDIR)\include\QtGui&quot;;..\include;..\..\Dependence\Include;..\..\Common;..\..\Include"
 				PreprocessorDefinitions="WIN32;QT_LARGEFILE_SUPPORT;QT_DLL;QT_CORE_LIB;QT_GUI_LIB"
 				RuntimeLibrary="3"
 				TreatWChar_tAsBuiltInType="false"
@@ -133,7 +133,7 @@
 				Name="VCLinkerTool"
 				AdditionalDependencies="qtmaind.lib QtCored4.lib QtGuid4.lib"
 				OutputFile="$(OutDir)\$(ProjectName).dll"
-				AdditionalLibraryDirectories="$(QTDIR)\lib"
+				AdditionalLibraryDirectories="&quot;$(QTDIR)\lib&quot;;..\..\Dependence\Lib"
 				GenerateDebugInformation="true"
 				ProgramDatabaseFile="..\..\pdb\$(TargetFileName).pdb"
 				SubSystem="2"
@@ -169,6 +169,10 @@
 			Filter="cpp;cxx;c;def"
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
+			<File
+				RelativePath="..\..\Common\DCommon.h"
+				>
+			</File>
 			<File
 				RelativePath=".\main.cpp"
 				>
@@ -239,7 +243,7 @@
 					<Tool
 						Name="VCCustomBuildTool"
 						Description="Moc&apos;ing xlandlordclient.h..."
-						CommandLine="&quot;$(QTDIR)\bin\moc.exe&quot;  &quot;$(InputPath)&quot; -o &quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot;  -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_CORE_LIB -DQT_GUI_LIB -D_WINDLL -D_MBCS  &quot;-I.\GeneratedFiles&quot; &quot;-I.&quot; &quot;-I$(QTDIR)\include&quot; &quot;-I.\GeneratedFiles\$(ConfigurationName)\.&quot; &quot;-I$(QTDIR)\include\QtCore&quot; &quot;-I$(QTDIR)\include\QtGui&quot; &quot;-I.\..\include&quot; &quot;-I.\..\..\Dependence\Include&quot; &quot;-fStdAfx.h&quot; &quot;-f../../xlandlordclient.h&quot;&#x0D;&#x0A;"
+						CommandLine="&quot;$(QTDIR)\bin\moc.exe&quot;  &quot;$(InputPath)&quot; -o &quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot;  -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_CORE_LIB -DQT_GUI_LIB -D_WINDLL -D_MBCS  &quot;-I.\GeneratedFiles&quot; &quot;-I.&quot; &quot;-I$(QTDIR)\include&quot; &quot;-I.\GeneratedFiles\$(ConfigurationName)\.&quot; &quot;-I$(QTDIR)\include\QtCore&quot; &quot;-I$(QTDIR)\include\QtGui&quot; &quot;-I.\..\include&quot; &quot;-I.\..\..\Dependence\Include&quot; &quot;-I.\..\..\Common&quot; &quot;-I.\..\..\Include&quot; &quot;-fStdAfx.h&quot; &quot;-f../../xlandlordclient.h&quot;&#x0D;&#x0A;"
 						AdditionalDependencies="&quot;$(QTDIR)\bin\moc.exe&quot;;$(InputPath)"
 						Outputs="&quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot;"
 					/>
@@ -451,6 +455,10 @@
 				Name="ServerTerminal"
 				>
 				<File
+					RelativePath="..\include\IServerTerminal.h"
+					>
+				</File>
+				<File
 					RelativePath=".\ServerTerminal.cpp"
 					>
 				</File>
@@ -486,17 +494,93 @@
 						<Tool
 							Name="VCCustomBuildTool"
 							Description="Moc&apos;ing MainTimer.h..."
-							CommandLine="&quot;$(QTDIR)\bin\moc.exe&quot;  &quot;$(InputPath)&quot; -o &quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot;  -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_CORE_LIB -DQT_GUI_LIB -D_WINDLL -D_MBCS  &quot;-I.\GeneratedFiles&quot; &quot;-I.&quot; &quot;-I$(QTDIR)\include&quot; &quot;-I.\GeneratedFiles\$(ConfigurationName)\.&quot; &quot;-I$(QTDIR)\include\QtCore&quot; &quot;-I$(QTDIR)\include\QtGui&quot; &quot;-I.\..\include&quot; &quot;-I.\..\..\Dependence\Include&quot; &quot;-fStdAfx.h&quot; &quot;-f../../MainTimer.h&quot;&#x0D;&#x0A;"
+							CommandLine="&quot;$(QTDIR)\bin\moc.exe&quot;  &quot;$(InputPath)&quot; -o &quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot;  -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_CORE_LIB -DQT_GUI_LIB -D_WINDLL -D_MBCS  &quot;-I.\GeneratedFiles&quot; &quot;-I.&quot; &quot;-I$(QTDIR)\include&quot; &quot;-I.\GeneratedFiles\$(ConfigurationName)\.&quot; &quot;-I$(QTDIR)\include\QtCore&quot; &quot;-I$(QTDIR)\include\QtGui&quot; &quot;-I.\..\include&quot; &quot;-I.\..\..\Dependence\Include&quot; &quot;-I.\..\..\Common&quot; &quot;-I.\..\..\Include&quot; &quot;-fStdAfx.h&quot; &quot;-f../../MainTimer.h&quot;&#x0D;&#x0A;"
 							AdditionalDependencies="&quot;$(QTDIR)\bin\moc.exe&quot;;$(InputPath)"
 							Outputs="&quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot;"
 						/>
 					</FileConfiguration>
 				</File>
 			</Filter>
+			<Filter
+				Name="MessageDispatcher"
+				>
+				<File
+					RelativePath="..\include\IMessageDispatcher.h"
+					>
+				</File>
+				<File
+					RelativePath="..\include\IMessageHandler.h"
+					>
+				</File>
+				<File
+					RelativePath=".\MessageDispatcher.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\MessageDispatcher.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="LoginManager"
+				>
+				<File
+					RelativePath="..\include\ILoginManager.h"
+					>
+				</File>
+				<File
+					RelativePath=".\LoginManager.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\LoginManager.h"
+					>
+				</File>
+			</Filter>
 		</Filter>
 		<Filter
 			Name="Factory"
 			>
+		</Filter>
+		<Filter
+			Name="Communicate"
+			>
+			<File
+				RelativePath="..\..\Include\Communicate\CSMessage.pb.cc"
+				>
+			</File>
+			<File
+				RelativePath="..\..\Include\Communicate\CSMessage.pb.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\Include\Communicate\login.pb.cc"
+				>
+			</File>
+			<File
+				RelativePath="..\..\Include\Communicate\login.pb.h"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="MsgHandler"
+			>
+			<File
+				RelativePath=".\MessageHandlerRegister.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\MessageHandlerRegister.h"
+				>
+			</File>
+			<File
+				RelativePath=".\MsgHandler_LoginRsp.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\MsgHandler_LoginRsp.h"
+				>
+			</File>
 		</Filter>
 	</Files>
 	<Globals>

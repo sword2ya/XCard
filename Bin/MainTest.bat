@@ -1,2 +1,3 @@
 
-@MainTest.exe
+@MainTest.exe --gtest_filter=CLoginTest*
+@pause

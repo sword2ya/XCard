@@ -1,0 +1,16 @@
+package csmsg;
+import "login.proto";
+
+enum ECSMessageID
+{
+	eMsgID_LoginReq = 1;
+	eMsgID_LoginRsp = 2;
+}
+
+message TCSMessage
+{
+	required ECSMessageID eMsgID = 1;
+	
+	optional TMSG_LOGIN_REQ stLoginReq=2;
+	optional TMSG_LOGIN_RSP stLoginRsp=3;
+}

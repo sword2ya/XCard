@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'MainTimer.h'
 **
-** Created: Wed Jun 14 16:28:16 2017
+** Created: Wed Aug 2 09:35:30 2017
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.0)
 **
 ** WARNING! All changes made in this file will be lost!

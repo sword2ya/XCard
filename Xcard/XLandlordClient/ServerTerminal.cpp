@@ -3,6 +3,7 @@
 #include "IGlobalClient.h"
 
 
+
 CServerTerminal::CServerTerminal(void)
 {
 	m_pClientSocket = NULL;
@@ -34,6 +35,38 @@ bool CServerTerminal::Create( ISocketSystem* pSocketSys, const char* szIp, DWORD
 	return true;
 }
 
+bool CServerTerminal::Send( csmsg::TCSMessage* pMsg )
+{
+	std::string strBuf;
+
+	if (NULL == pMsg)
+	{
+		Error(__FUNCTION__<<" 消息为空");
+		return false;
+	}
+	try
+	{
+		if (!pMsg->SerializeToString(&strBuf))
+		{
+			Error(__FUNCTION__<<" 消息序列化失败");
+			return false;
+		}
+	}
+	catch (exception* e)
+	{
+		Error(__FUNCTION__<<" 消息序列化异常，异常信息："<<e->what());
+		return false;
+	}
+	catch(...)
+	{
+		Error(__FUNCTION__<<" 消息序列化异常，未知异常信息");
+		return false;
+	}
+
+
+	return (bool)m_pClientSocket->Send(strBuf.c_str(), strBuf.size());
+}
+
 void CServerTerminal::OnTimer( int iEventID )
 {
 	if (iEventID == eTimerID_Conn)
@@ -45,7 +78,15 @@ void CServerTerminal::OnTimer( int iEventID )
 
 void CServerTerminal::OnRecv( IClientSocket *pClientSocket, LPCSTR Buf, int nLen )
 {
-
+	static csmsg::TCSMessage stMsg;
+	static std::string strBuf(Buf, Buf+nLen);
+	if (!stMsg.ParseFromString(strBuf))
+	{
+		Error(__FUNCTION__<<" 不可识别的消息包");
+		return;
+	}
+	IMessageDispatcher* pMsgDispatcher = g_pGlobalClient->GetMessageDispatcher();
+	pMsgDispatcher->HandlerMessage(&stMsg);
 }
 
 void CServerTerminal::OnCloseConnect( IClientSocket *pClientSocket )

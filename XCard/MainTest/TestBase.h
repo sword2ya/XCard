@@ -22,7 +22,7 @@ protected:
 
 	static void _PushTick(DWORD dwMsec);
 
-
+protected: // 以下函数直接调用客户端函数
 
 protected:
 	static CModalLoader s_ML_LandlordClient;

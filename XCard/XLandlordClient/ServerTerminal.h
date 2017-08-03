@@ -1,6 +1,8 @@
 #pragma once
+#include "MessageDispatcher.h"
+#include "IServerTerminal.h"
 
-class CServerTerminal : public ITimerSink , public IClientSocketSink 
+class CServerTerminal : public ITimerSink , public IClientSocketSink , public IServerTerminal
 {
 	enum ETimerID 
 	{
@@ -11,6 +13,9 @@ public:
 	~CServerTerminal(void);
 
 	bool Create(ISocketSystem* pSocketSys, const char* szIp, DWORD dwPort );
+
+public: // IServerTerminal
+	virtual bool Send(csmsg::TCSMessage* pMsg);
 
 public: // ITiemrSink
 	virtual void OnTimer(int iEventID);

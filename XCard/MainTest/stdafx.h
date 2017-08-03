@@ -29,12 +29,26 @@ using namespace std;
 using namespace socketsystem;
 using namespace basetools;
 
+#include "DCommon.h"
+
+
+
 #include "IGlobalClient.h"
 
 #include "UtilMacro.h"
 
+#include "Communicate\CSMessage.pb.h"
+
 #define Trace(x) {stringstream s; s<<x;  fprintf(stdout, s.str().c_str() ); fprintf(stdout, "\n");}
 #define Error(x) {stringstream s; s<<x;  fprintf(stderr, s.str().c_str() ); fprintf(stderr, "\n");}
 #define Warning(x) {stringstream s; s<<x;  fprintf(stderr, s.str().c_str() ); fprintf(stderr, "\n");}
+
+#pragma comment(lib, "libprotobufd.lib")
+
+namespace csmsg
+{
+	class TCSMessage;
+}
+extern csmsg::TCSMessage g_stMessagePackage;
 
 // TODO: 在此处引用程序需要的其他头文件

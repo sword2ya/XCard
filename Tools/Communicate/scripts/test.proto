@@ -1,0 +1,9 @@
+
+message TMSG_TEST_REQ
+{
+}
+
+message TMSG_TEST_RSP
+{
+
+}

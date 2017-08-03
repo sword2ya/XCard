@@ -3,6 +3,7 @@
 #include "SocketSystem.h"
 #include "SystemAPI.h"
 #include "appframe/basetools/ITimerHelper.h"
+#include "ILoginManager.h"
 
 CModalLoader CTestBase::s_ML_LandlordClient;
 IGlobalClient* CTestBase::s_pGlobalClient = NULL;
@@ -64,6 +65,7 @@ bool CTestBase::InitParam()
 
 	CSocketSystem* pSocketSys = new CSocketSystem;
 	pSocketSys->SetServerSession(s_pServerSession);
+	s_pServerSession->SetSocketSystem(pSocketSys);
 	s_stGlobalClientParam.pSocketSystem = pSocketSys;
 	s_stGlobalClientParam.pSystemAPI = new CSystemAPI;
 	s_stGlobalClientParam.pTimerAxis = s_oBasetoolsLoader.LoadTimerAxis();
@@ -97,7 +99,11 @@ void CTestBase::_PushTick(DWORD dwMsec)
 
 CServerSession* CTestBase::DefaultInitServerSession()
 {
-	return new CServerSession;
+	CServerSession* pServerSession = new CServerSession;
+	if (NULL == pServerSession || !pServerSession->Create())
+	{
+		return NULL;
+	}
+	return pServerSession;
 }
-
 

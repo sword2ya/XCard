@@ -1,6 +1,7 @@
 #include "StdAfx.h"
 #include "MainTimer.h"
 #include "IGlobalClient.h"
+#include "isystemapi.h"
 
 using basetools::ITimerAxis;
 

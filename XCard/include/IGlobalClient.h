@@ -1,10 +1,14 @@
 #pragma once 
-#include "ISystemAPI.h"
 
 namespace basetools
 {
 	class ITimerAxis;
 }
+
+class ISystemAPI;
+class IServerTerminal;
+class ILoginManager;
+class IMessageDispatcher;
 
 enum EClientRunState
 {
@@ -44,4 +48,10 @@ public:
 	virtual basetools::ITimerAxis* GetTimerAxis() = NULL;
 
 	virtual ISystemAPI* GetSystemAPI() = NULL; 
+
+	virtual ILoginManager* GetLoginManager() = NULL;
+
+	virtual IServerTerminal* GetServerTerminal() = NULL;
+
+	virtual IMessageDispatcher* GetMessageDispatcher() = NULL;
 };
